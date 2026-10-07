@@ -1,0 +1,294 @@
+:root {
+    --surface-1: #05070C;
+    --surface-2: #0A0D12;
+    --surface-3: #0F131C;
+    --surface-4: #161D2B;
+    --surface-5: #1E2636;
+    --accent: #3B6DFF;
+    --accent-dim: #5B82FF;
+    --text-primary: #E8EAF0;
+    --text-secondary: #A0A8C0;
+    --spacing-xs: clamp(0.5rem, 1vw, 0.75rem);
+    --spacing-sm: clamp(0.75rem, 1.5vw, 1rem);
+    --spacing-md: clamp(1rem, 2vw, 1.5rem);
+    --spacing-lg: clamp(1.5rem, 3vw, 2.5rem);
+    --spacing-xl: clamp(2rem, 4vw, 4rem);
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 999px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--surface-1);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* 头部英雄区 */
+.hero {
+    background: linear-gradient(135deg, var(--surface-3) 0%, var(--surface-4) 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+    display: grid;
+    gap: var(--spacing-md);
+    justify-items: center;
+}
+
+.avatar-wrapper {
+    width: clamp(120px, 20vw, 200px);
+    height: clamp(120px, 20vw, 200px);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--accent);
+    box-shadow: 0 0 32px rgba(59, 109, 255, 0.3);
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(120deg, var(--text-primary), var(--accent-dim));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.links {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--surface-5);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.link-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(59, 109, 255, 0.3);
+}
+
+.icon {
+    font-size: 1.2em;
+}
+
+/* 通用区块 */
+.section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    position: relative;
+    padding-bottom: var(--spacing-sm);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: var(--radius-full);
+}
+
+/* 关于我卡片 */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.about-card {
+    background: var(--surface-3);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(59, 109, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.about-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.about-card h3 {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    margin-bottom: var(--spacing-sm);
+    color: var(--accent-dim);
+}
+
+.about-card p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+/* 相册网格 */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.gallery-item {
+    background: var(--surface-3);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(59, 109, 255, 0.1);
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    border-color: var(--accent);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-caption {
+    padding: var(--spacing-md);
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+/* 表格样式 */
+.table-wrapper {
+    background: var(--surface-3);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(59, 109, 255, 0.1);
+}
+
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.course-table thead {
+    background: var(--surface-4);
+}
+
+.course-table th {
+    padding: var(--spacing-md);
+    text-align: left;
+    font-weight: 600;
+    color: var(--accent-dim);
+    border-bottom: 2px solid var(--accent);
+}
+
+.course-table td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--surface-4);
+    color: var(--text-secondary);
+}
+
+.course-table tbody tr:hover {
+    background: var(--surface-4);
+}
+
+.course-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 页脚 */
+.footer {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--surface-4);
+    margin-top: var(--spacing-xl);
+}
+
+.footer p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+    .hero {
+        padding: var(--spacing-lg);
+    }
+
+    .links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .link-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .course-table {
+        font-size: 0.9rem;
+    }
+
+    .course-table th,
+    .course-table td {
+        padding: var(--spacing-sm);
+    }
+}
