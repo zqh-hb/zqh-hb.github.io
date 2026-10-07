@@ -1,0 +1,877 @@
+:root {
+    --bg-dark-1: #f7faff;
+    --bg-dark-2: #eef4ff;
+    --bg-dark-3: #ffffff;
+    --bg-dark-4: #e4edff;
+    --bg-dark-5: #d8e4fb;
+    --accent-blue: #2563eb;
+    --accent-cyan: #0891b2;
+    --accent-purple: #7c3aed;
+    --accent-gold: #c47a24;
+    --text-primary: #172033;
+    --text-secondary: #4b5b73;
+    --text-dim: #718096;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg-dark-1);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 导航栏 */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(59, 109, 255, 0.1);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 4vw, 3rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--accent-blue);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+}
+
+.nav-menu {
+    display: flex;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    list-style: none;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-blue);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* 页面通用 */
+.page {
+    min-height: 100vh;
+    position: relative;
+    display: block;
+    padding-top: 80px;
+}
+
+.content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+}
+
+/* 第一页：关于我 */
+.page-home {
+    background: linear-gradient(135deg, var(--bg-dark-1) 0%, var(--bg-dark-3) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(59, 109, 255, 0.3), transparent),
+        radial-gradient(2px 2px at 60% 70%, rgba(56, 189, 248, 0.3), transparent),
+        radial-gradient(1px 1px at 50% 50%, rgba(139, 92, 246, 0.2), transparent);
+    background-size: 200px 200px, 150px 150px, 100px 100px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    animation: particlesMove 20s linear infinite;
+}
+
+@keyframes particlesMove {
+    100% {
+        background-position: 200px 200px, 240px 260px, 330px 470px;
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.avatar-container {
+    position: relative;
+    width: clamp(180px, 25vw, 280px);
+    height: clamp(180px, 25vw, 280px);
+    margin: 0 auto clamp(2rem, 4vw, 3rem);
+}
+
+.avatar-ring {
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan), var(--accent-purple));
+    animation: rotate 8s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    border: 4px solid var(--bg-dark-2);
+}
+
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.greeting {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.name {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    background: linear-gradient(120deg, var(--text-primary), var(--accent-blue), var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--text-secondary);
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+/* 信息卡片 */
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: clamp(4rem, 6vw, 6rem);
+}
+
+.info-card {
+    background: var(--bg-dark-3);
+    padding: clamp(2rem, 4vw, 3rem);
+    border-radius: 24px;
+    border: 1px solid rgba(59, 109, 255, 0.1);
+    transition: all 0.4s ease;
+    text-align: center;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 20px 40px rgba(59, 109, 255, 0.2);
+}
+
+.card-icon {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+}
+
+.info-card h3 {
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+    margin-bottom: 1rem;
+    color: var(--accent-blue);
+}
+
+.info-card p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.year {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+}
+
+/* 技能部分 */
+.skills-section {
+    margin-bottom: clamp(4rem, 6vw, 6rem);
+}
+
+.section-heading {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    text-align: center;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    color: var(--text-primary);
+    position: relative;
+}
+
+.section-heading::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+    margin: 1rem auto 0;
+    border-radius: 999px;
+}
+
+.skills-grid {
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.skill-bar {
+    flex: 1;
+    height: 12px;
+    background: var(--bg-dark-4);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+    border-radius: 999px;
+    transition: width 1s ease;
+    box-shadow: 0 0 20px rgba(59, 109, 255, 0.5);
+}
+
+.skill-name {
+    min-width: 100px;
+    text-align: right;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* 联系链接 */
+.contact-links {
+    display: flex;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: var(--bg-dark-4);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(59, 109, 255, 0.3);
+}
+
+.btn-icon {
+    font-size: 1.3em;
+}
+
+/* 滚动指示器 */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+.scroll-arrow {
+    width: 24px;
+    height: 24px;
+    border-left: 2px solid var(--accent-blue);
+    border-bottom: 2px solid var(--accent-blue);
+    transform: rotate(-45deg);
+}
+
+/* 第二页：北京 */
+.page-beijing {
+    background: var(--bg-dark-2);
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.page-number {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--accent-gold);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+}
+
+.page-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin: 1rem 0;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.title-line {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-gold), var(--accent-blue));
+    margin: 1.5rem auto;
+    border-radius: 999px;
+}
+
+.feature-image {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: clamp(3rem, 5vw, 4rem);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    background: var(--bg-dark-4);
+}
+
+.main-image {
+    width: 100%;
+    height: clamp(300px, 50vw, 600px);
+    object-fit: contain;
+    display: block;
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: clamp(2rem, 4vw, 3rem);
+    background: linear-gradient(to top, rgba(23, 32, 51, 0.82), transparent);
+}
+
+.image-overlay h3 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: var(--text-primary);
+}
+
+.intro-text {
+    margin-bottom: clamp(3rem, 5vw, 4rem);
+}
+
+.lead-text {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.8;
+    color: var(--text-secondary);
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 特色卡片 */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp(2rem, 3vw, 3rem);
+    margin-bottom: clamp(4rem, 6vw, 6rem);
+}
+
+.feature-card {
+    background: var(--bg-dark-3);
+    padding: clamp(2rem, 4vw, 3rem);
+    border-radius: 24px;
+    border: 1px solid rgba(233, 165, 104, 0.1);
+    transition: all 0.4s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.card-history:hover { border-color: #E9A568; }
+.card-modern:hover { border-color: var(--accent-cyan); }
+.card-culture:hover { border-color: var(--accent-purple); }
+
+.feature-icon {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    margin-bottom: 1rem;
+    color: var(--accent-gold);
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.feature-list li {
+    padding: 0.5rem 0;
+    color: var(--text-dim);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.feature-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+}
+
+/* 图片画廊 */
+.gallery-section {
+    margin-bottom: clamp(4rem, 6vw, 6rem);
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 3/2;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(23, 32, 51, 0.78), transparent);
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* 统计数据 */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(2rem, 3vw, 3rem);
+    text-align: center;
+    padding: clamp(3rem, 5vw, 4rem) 0;
+}
+
+.stat-item {
+    padding: 2rem;
+    background: var(--bg-dark-3);
+    border-radius: 16px;
+    border: 1px solid rgba(233, 165, 104, 0.2);
+}
+
+.stat-number {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+}
+
+/* 第三页：中科大 */
+.page-ustc {
+    background: var(--bg-dark-1);
+}
+
+.page-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: var(--accent-cyan);
+    margin-top: 1rem;
+}
+
+.hero-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: clamp(3rem, 5vw, 5rem);
+    align-items: center;
+    margin-bottom: clamp(5rem, 8vw, 7rem);
+}
+
+.hero-text h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.intro-paragraph {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.hero-stats {
+    display: flex;
+    gap: clamp(2rem, 4vw, 3rem);
+    flex-wrap: wrap;
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.stat-value {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--accent-cyan);
+}
+
+.stat-desc {
+    color: var(--text-dim);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.hero-image {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    background: var(--bg-dark-4);
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* 时间线 */
+.timeline-section {
+    margin-bottom: clamp(5rem, 8vw, 7rem);
+}
+
+.timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: clamp(2rem, 4vw, 3rem);
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-blue));
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: clamp(3rem, 5vw, 4rem);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.8rem;
+    top: 0.5rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    box-shadow: 0 0 20px var(--accent-cyan);
+}
+
+.timeline-year {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--accent-cyan);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content h3 {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.timeline-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* 学科卡片 */
+.departments-section {
+    margin-bottom: clamp(5rem, 8vw, 7rem);
+}
+
+.departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.dept-card {
+    background: var(--bg-dark-3);
+    padding: clamp(2rem, 4vw, 2.5rem);
+    border-radius: 20px;
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    transition: all 0.4s ease;
+    text-align: center;
+}
+
+.dept-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 16px 32px rgba(56, 189, 248, 0.2);
+}
+
+.dept-icon {
+    font-size: clamp(2.5rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.dept-card h3 {
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+    margin-bottom: 1rem;
+    color: var(--accent-cyan);
+}
+
+.dept-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+/* 校园画廊 */
+.campus-gallery {
+    margin-bottom: clamp(5rem, 8vw, 7rem);
+}
+
+.campus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.campus-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+
+.campus-item.large {
+    grid-column: span 2;
+}
+
+.campus-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.campus-item:hover img {
+    transform: scale(1.1);
+}
+
+.campus-label {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* 校训部分 */
+.motto-section {
+    text-align: center;
+}
+
+.motto {
+    padding: clamp(3rem, 5vw, 4rem);
+    background: var(--bg-dark-3);
+    border-radius: 24px;
+    border-left: 4px solid var(--accent-cyan);
+    margin-bottom: clamp(3rem, 5vw, 4rem);
+}
+
+.motto-text {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--accent-cyan);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+}
+
+.motto-desc {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--text-secondary);
+}
+
+.spirit-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.spirit-card {
+    padding: clamp(2rem, 3vw, 2.5rem);
+    background: var(--bg-dark-3);
+    border-radius: 16px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.spirit-card h4 {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    color: var(--accent-cyan);
+    margin-bottom: 0.75rem;
+}
+
+.spirit-card p {
+    color: var(--text-secondary);
+}
+
+/* 页脚 */
+.footer {
+    background: var(--bg-dark-2);
+    border-top: 1px solid rgba(59, 109, 255, 0.1);
+    padding: clamp(2rem, 4vw, 3rem);
+    text-align: center;
+}
+
+.footer-content p {
+    color: var(--text-dim);
+    margin: 0.5rem 0;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .nav-menu {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .hero-section,
+    .campus-item.large {
+        grid-template-columns: 1fr;
+    }
+
+    .campus-item.large {
+        grid-column: span 1;
+    }
+
+    .timeline {
+        padding-left: 2rem;
+    }
+
+    .timeline-item::before {
+        left: -2.4rem;
+    }
+}
